@@ -25,10 +25,23 @@ const filter = function (field, operator, value) {
     const GREATER_THAN = 'GREATER_THAN'
     const LESS_THAN = 'LESS_THAN'
 
+    let result = []
+    switch (operator) {
+        case EQUAL:
+            items.filter(i => i[field] == value ? result.push(i) : null)
+            break;
+        case CONTAINS:
+            items.filter(i => i[field].indexOf(value) > -1 ? result.push(i) : null)
+            break;
+        case GREATER_THAN:
+            items.filter(i => i[field] > value ? result.push(i) : null)
+            break;
+        case LESS_THAN:
+            items.filter(i => i[field] < value ? result.push(i) : null)
+            break;
+    }       
 
-    /* YOUR CODE HERE */
-
-
+    return result
 
 
 }
